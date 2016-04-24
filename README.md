@@ -33,8 +33,13 @@ mvn spring-boot:run
 
 ### Testing The Application
 To test you can use [Postman](https://www.getpostman.com) or [SOAP UI](https://www.soapui.org)
+
 You can also use curl
 
+i.e. 
 
+```
+curl -H "Content-Type: application/json" -X POST -d '{"setOfStrings":[{"value":"sdropungard"},{"value":"sungarderdrop"},{"value":"dropgarden"}]}' http://localhost:8080/lcs
+```
 
 
