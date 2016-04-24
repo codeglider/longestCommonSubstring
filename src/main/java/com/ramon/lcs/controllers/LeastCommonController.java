@@ -38,7 +38,9 @@ public class LeastCommonController {
             if(value.getValue().length() < 1)
             {
                 logger.error("invalid string input in list.");
-                return new ResponseEntity<LeastCommonResponse>(HttpStatus.BAD_REQUEST);
+                LeastCommonResponse response = new LeastCommonResponse();
+                response.setLcs("One Or More Of The Input Values Were An Empty String");
+                return new ResponseEntity<LeastCommonResponse>(response, HttpStatus.FAILED_DEPENDENCY);
             }
             logger.info("adding to list: " + value.getValue());
             stringList.add(value.getValue());
@@ -49,6 +51,14 @@ public class LeastCommonController {
         logger.info("String list built with : " + stringList.size() + " strings.");
 
         String lcs = longestCommonService.findLongestCommonString(stringList.toArray(new String[0]));
+
+        if(lcs == null)
+        {
+            LeastCommonResponse response = new LeastCommonResponse();
+            response.setLcs("NO LCS Found. SORRY TRY AGAIN, WON'T YOU?");
+            return new ResponseEntity<LeastCommonResponse>(response, HttpStatus.BAD_REQUEST);
+        }
+
         LeastCommonResponse response = new LeastCommonResponse();
         response.setLcs(lcs);
 

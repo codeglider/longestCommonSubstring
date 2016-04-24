@@ -45,7 +45,7 @@ public class LongestCommonService {
             }
         }
 
-        return "NO LCS Found. SORRY TRY AGAIN, WON'T YOU?";
+        return null;
 
     }
 
