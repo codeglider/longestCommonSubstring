@@ -1,5 +1,7 @@
 ## Instructions
 
+This application is built using [Spring Boot](http://projects.spring.io/spring-boot)
+
 ### Set Up Maven
 [Download](https://maven.apache.org/download.cgi) and [Install](https://maven.apache.org/install.html) [Maven](https://maven.apache.org)
 
@@ -18,5 +20,21 @@ For Mac [See the following](https://git-scm.com/book/en/v2/Getting-Started-Insta
 
 ### Clone Project On To Your Machine
 Using git please clone on to your computer, you can also use source tree.
-git clone (https://github.com/codeglider/longestCommonSubstring.git)
+git clone https://github.com/codeglider/longestCommonSubstring.git
+
+### Running Application
+Open a terminal or command line
+Go to the directory where you cloned the project
+Make sure you see pom.xml
+
+If you do then issue the command
+
+mvn spring-boot:run
+
+### Testing The Application
+To test you can use [Postman](https://www.getpostman.com) or [SOAP UI](https://www.soapui.org)
+You can also use curl
+
+
+
 
