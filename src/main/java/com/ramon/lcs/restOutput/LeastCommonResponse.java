@@ -1,5 +1,9 @@
 package com.ramon.lcs.restOutput;
 
+import com.ramon.lcs.restInput.TheValue;
+
+import java.util.List;
+
 /**
  * Use primarily for returning a result.
  * Only attribute is result which is set by the
@@ -7,13 +11,13 @@ package com.ramon.lcs.restOutput;
  */
 public class LeastCommonResponse {
 
-    private String lcs;
+    private List<TheValue> results;
 
-    public void setLcs(String lcs) {
-        this.lcs = lcs;
+    public List<TheValue> getResults() {
+        return results;
     }
 
-    public String getLcs() {
-        return lcs;
+    public void setResults(List<TheValue> results) {
+        this.results = results;
     }
 }

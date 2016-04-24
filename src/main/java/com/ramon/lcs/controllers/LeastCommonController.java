@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @RestController
@@ -32,37 +33,11 @@ public class LeastCommonController {
         List<TheValue> values = lcsRequst.getSetOfStrings();
         logger.info("Number Of Strings To Compare: " + values.size());
 
-        List<String> stringList = new ArrayList<String>(values.size());
-
-        for (TheValue value :  values) {
-            if(value.getValue().length() < 1)
-            {
-                logger.error("invalid string input in list.");
-                LeastCommonResponse response = new LeastCommonResponse();
-                response.setLcs("One Or More Of The Input Values Were An Empty String");
-                return new ResponseEntity<LeastCommonResponse>(response, HttpStatus.FAILED_DEPENDENCY);
-            }
-            logger.info("adding to list: " + value.getValue());
-            stringList.add(value.getValue());
-        }
-
-        stringList.sort(CommonComparators.ALPHABETICAL_ORDER);
-
-        logger.info("String list built with : " + stringList.size() + " strings.");
-
-        String lcs = longestCommonService.findLongestCommonString(stringList.toArray(new String[0]));
-
-        if(lcs == null)
-        {
-            LeastCommonResponse response = new LeastCommonResponse();
-            response.setLcs("NO LCS Found. SORRY TRY AGAIN, WON'T YOU?");
-            return new ResponseEntity<LeastCommonResponse>(response, HttpStatus.BAD_REQUEST);
-        }
+        List<TheValue> result = longestCommonService.findLongestCommonString(values);
 
         LeastCommonResponse response = new LeastCommonResponse();
-        response.setLcs(lcs);
+        response.setResults(result);
 
-        logger.info("Result: " + lcs);
         return new ResponseEntity<LeastCommonResponse>(response, HttpStatus.OK);
     }
 
